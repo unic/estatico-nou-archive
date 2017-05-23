@@ -1,7 +1,9 @@
 const gulp = require('gulp')
 const html = require('estatico-html')
 const validateHtml = require('estatico-html-validate')
+const watch = require('estatico-watch')
 const path = require('path')
+const merge = require('lodash.merge')
 
 // Exemplary custom config
 const config = {
@@ -24,9 +26,19 @@ const config = {
 
 gulp.task('default', gulp.series(
   function htmlTask () {
-    return html.task(config.html)
+    return html.fn(config.html)
   },
   function validateHtmlTask () {
-    return validateHtml.task(config.validateHtml)
+    return validateHtml.fn(config.validateHtml)
   }
 ))
+
+gulp.task('watch', function watchTask () {
+  watch.fn({
+    task: {
+      fn: html.fn,
+      name: html.name,
+      config: merge({}, html.defaults, config.html)
+    }
+  })
+})
