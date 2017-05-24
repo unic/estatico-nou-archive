@@ -40,5 +40,5 @@ gulp.task('watch', function watchTask () {
       name: html.name,
       config: merge({}, html.defaults, config.html)
     }
-  })
+  }, gulp)
 })
