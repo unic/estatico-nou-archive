@@ -3,9 +3,9 @@ const path = require('path')
 const merge = require('lodash.merge')
 
 const tasks = {
-  html: require('../estatico-html'),
-  validateHtml: require('../estatico-html-validate'),
-  watch: require('../estatico-watch')
+  html: require('estatico-html'),
+  validateHtml: require('estatico-html-validate'),
+  watch: require('estatico-watch')
 }
 
 // Exemplary custom config
