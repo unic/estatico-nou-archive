@@ -3,7 +3,7 @@ const path = require('path')
 
 // Exemplary custom config
 const config = {
-  html: {
+  handlebars: {
     plugins: {
       // Use JSON file instead of data.js
       data: (file) => {
@@ -23,7 +23,7 @@ const config = {
 
 // Exemplary tasks
 const tasks = {
-  handlebars: require('estatico-handlebars')(config.html),
+  handlebars: require('estatico-handlebars')(config.handlebars),
   validateHtml: require('estatico-html-validate')(config.validateHtml),
   watch: require('estatico-watch')(config.watch, gulp)
 }
