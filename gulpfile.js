@@ -23,15 +23,15 @@ const config = {
 
 // Exemplary tasks
 const tasks = {
-  html: require('estatico-html')(config.html),
+  handlebars: require('estatico-handlebars')(config.html),
   validateHtml: require('estatico-html-validate')(config.validateHtml),
   watch: require('estatico-watch')(config.watch, gulp)
 }
 
 gulp.task('default', gulp.series(
   // Create named functions so gulp-cli can properly log them
-  function html () {
-    return tasks.html.fn()
+  function handlebars () {
+    return tasks.handlebars.fn()
   },
   function validateHtml () {
     return tasks.validateHtml.fn()
