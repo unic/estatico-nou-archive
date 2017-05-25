@@ -21,7 +21,6 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "estatico-html": "github:unic/estatico-html",
     "estatico-html-validate": "github:unic/estatico-html-validate",
-    "estatico-watch": "github:unic/estatico-watch",
-    "lodash.merge": "^4.6.0"
+    "estatico-watch": "github:unic/estatico-watch"
   }
 }
