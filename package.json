@@ -5,22 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix \"{,**,**/**}*.js\"",
+    "update-dependencies": "npx npm-check-updates -u -a",
     "gulp": "gulp"
   },
   "author": "Unic AG",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^4.2.2",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   },
   "dependencies": {
     "gulp": "github:gulpjs/gulp#4.0",
     "estatico-handlebars": "github:unic/estatico-handlebars",
     "estatico-html-validate": "github:unic/estatico-html-validate",
     "estatico-watch": "github:unic/estatico-watch"
+  },
+  "engines": {
+    "node": ">=8 <9"
   }
 }
