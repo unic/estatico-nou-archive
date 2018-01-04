@@ -1,7 +1,8 @@
 const gulp = require('gulp');
 const path = require('path');
-const estaticoHandlebars = require('estatico-handlebars')
-const estaticoHtmlValidate = require('estatico-html-validate')
+const estaticoHandlebars = require('estatico-handlebars');
+const estaticoHtmlValidate = require('estatico-html-validate');
+const estaticoStyleLint = require('estatico-style-lint');
 const estaticoWatch = require('estatico-watch');
 
 // Exemplary custom config
@@ -15,6 +16,11 @@ const config = {
   validateHtml: {
     src: './dist/*.html', // Skip module build, test index only
   },
+  stylelint: {
+    src: [
+      './src/modules/**/*.scss',
+    ],
+  },
   watch: null,
 };
 
@@ -22,10 +28,26 @@ const config = {
 const tasks = {
   // Create named functions so gulp-cli can properly log them
   handlebars: estaticoHandlebars(config.handlebars),
+  stylelint: estaticoStyleLint(config.stylelint),
   validateHtml: estaticoHtmlValidate(config.validateHtml),
 };
 
-gulp.task('default', gulp.series(tasks.handlebars.fn, tasks.validateHtml.fn));
+gulp.task('handlebars', (done) => {
+  estaticoHandlebars(config.handlebars);
+  done();
+});
+
+gulp.task('validate', (done) => {
+  estaticoHtmlValidate(config.validateHtml);
+  done();
+});
+
+gulp.task('stylelint', (done) => {
+  estaticoStyleLint(config.stylelint);
+  done();
+});
+
+gulp.task('default', gulp.series('handlebars', 'validate', 'stylelint'));
 
 gulp.task('watch', () => {
   Object.keys(tasks).forEach((task) => {
